@@ -19,7 +19,7 @@ namespace JwtAuthentication
                 //throw new UnauthorizedAccessException("Unauthorize access denied!");
                 return new JwtAuthResponse
                 {
-                    
+                    // if token is failed it shows wrong user password
                     Token = "wrong user/password",
                    
                 };
