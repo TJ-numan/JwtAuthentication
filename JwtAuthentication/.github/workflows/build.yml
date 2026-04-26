@@ -1,0 +1,26 @@
+name: Build LifeInsurance WebForms
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1
+
+    - name: Restore NuGet Packages
+      run: nuget restore LifeInsurance.sln
+
+    - name: Build Solution
+      run: msbuild JwtAuthentication.sln /p:Configuration=Release
